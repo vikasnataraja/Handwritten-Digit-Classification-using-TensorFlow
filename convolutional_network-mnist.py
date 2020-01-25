@@ -94,7 +94,7 @@ plt.show()
 # CHANGE THIS DIRECTORY TO ANY DIRECTORY ON YOUR SYSTEM!!!
 # This is where the model will be saved after it is run
 #########################################################
-model_dir = 'C:/Users/hnvik/Desktop/CU Boulder/Fall 2019/ATOC 4815/DeepLearning/haha'
+model_dir = os.getcwd()
 
 
 # ## Hyperparameters
@@ -120,9 +120,6 @@ dropout = 0.25 # Dropout, probability to drop a unit
 
 # ## Non-tunable parameters
 
-# In[ ]:
-
-
 num_input = 784 # MNIST data input (img shape: 28*28)
 num_classes = 10 # MNIST total classes (0-9 digits)
 
@@ -132,7 +129,6 @@ num_classes = 10 # MNIST total classes (0-9 digits)
 # * The convolutional layer, max pooling layer, fully connected layer are all defined here.
 # * This is essentially the bulk of the work in creating your model
 
-# In[ ]:
 
 
 # Create the neural network
@@ -175,8 +171,6 @@ def conv_net(x_dict, n_classes, dropout, reuse, is_training):
 # 
 # * The model function rounds out the network
 # * It combines your layers, defines the loss functions, defines the optimizer, accuracy and error metrics
-
-# In[ ]:
 
 
 # Define the model function (following TF Estimator Template)
@@ -265,12 +259,9 @@ input_fn = tf.estimator.inputs.numpy_input_fn(
 model.evaluate(input_fn)
 """
 
-
 # ## Test the trained model on test set
 # 
 # * Now that the model has been trained, you can test it on new images i.e your test images
-
-# In[ ]:
 
 
 # Evaluate the Model
@@ -283,8 +274,6 @@ model.evaluate(input_fn)
 
 
 # ## Visualize the results
-
-# In[ ]:
 
 
 # Predict single images
