@@ -10,7 +10,7 @@ It is recommended to create a new conda environment for this tutorial. Execute t
 conda create -n cnn python=3.10
 conda activate cnn
 conda install -c conda-forge numpy matplotlib -y
-conda install -c conda-forge tensorflow==2.12.0 keras==2.12.0 -y
+conda install tensorflow==2.12.0 keras==2.12.0 -y
 ```
 
 NOTE: Anaconda installation of tensorflow tends to be slow (30 - 60 minutes). This is an active issue that is out of our control (for now). Please feel free to run this in the background beforehand.
