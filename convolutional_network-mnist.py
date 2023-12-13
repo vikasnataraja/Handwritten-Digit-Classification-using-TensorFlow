@@ -77,17 +77,38 @@ callbacks = [keras.callbacks.EarlyStopping(patience=50, verbose=1),
 model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
 
 # # fit the model to the dataset X: train_images, y: train_labels
-model.fit(train_images, train_labels,
+history = model.fit(train_images, train_labels,
           batch_size=batch_size, epochs=num_epochs,
           validation_split=0.1, verbose=1,
           callbacks=callbacks)
+
+
+fig, ax = plt.subplots(1, 2, figsize=(20, 6))
+
+# first plot will be of accuracies
+ax[0].plot(history.history['accuracy'], color='blue', label='training')
+ax[0].plot(history.history['val_accuracy'], color='orange', label='validation')
+ax[0].set_title('Model Accuracy')
+ax[0].set_ylabel('Accuracy')
+ax[0].set_xlabel('Epoch')
+ax[0].legend()
+
+# second plot will be of the errors
+ax[1].plot(history.history['loss'], color='blue', label='training')
+ax[1].plot(history.history['val_loss'], color='orange', label='validation')
+ax[1].set_title('Model Loss')
+ax[1].set_ylabel('Loss')
+ax[1].set_xlabel('Epoch')
+ax[1].legend(['training', 'validation'])
+
+fig.savefig('train_test.png', dpi=200)
+
+plt.close()
 
 score = model.evaluate(test_images, test_labels, verbose=1)
 print("Test loss:", score[0])
 print("Test accuracy:", score[1])
 
-# Predict on n_images
-n_images = 21
 
 # Use the model to predict the images class
 predictions = model.predict(test_images)
@@ -101,5 +122,8 @@ for i in range(1, columns*rows +1):
     plt.imshow(test_images[i],cmap='gray')
     plt.title('Predicted label = {}'.format(np.argmax(predictions[i])))
     plt.axis('off')
-plt.show()
+
+fig.savefig('predictions.png', dpi=200)
+plt.close()
+# plt.show()
 
