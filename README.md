@@ -7,7 +7,7 @@ This repo is a simple python script that teaches beginners about deep learning. 
 It is recommended to create a new conda environment for this tutorial. Execute the following commands in a terminal.
 
 ```
-conda create -n cnn python=3.10
+conda create -n cnn python=3.10 -y
 conda activate cnn
 conda install -c conda-forge numpy matplotlib -y
 conda install tensorflow==2.12.0 keras==2.12.0 -y
